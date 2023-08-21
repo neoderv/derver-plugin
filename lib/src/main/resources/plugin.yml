@@ -1,0 +1,53 @@
+name: DerverPlugin
+version: 1.0.0
+main: net.xenocubium.derver.Main
+description: Derver plugin...
+author: PaperMC
+website: https://papermc.io
+api-version: '1.20'
+load: startup
+commands:
+   power:
+      description: Convert all of your diamonds into 1 power each
+      usage: /<command> [group]
+      permission: derver.power
+   getpower:
+      description: Get the power level of a group
+      usage: /<command> [group]
+      permission: derver.getpower
+   claim:
+      description: Add power to your claim on this chunk (1 power / chunk)
+      usage: /<command> [group]
+      permission: derver.claim
+   newgroup:
+      description: Create a claim group
+      usage: /<command> [group]
+      permission: derver.newgroup
+   addgroup:
+      description: Add a player to a claim group that you own
+      usage: /<command> [group] [player]
+      permission: derver.addgroup
+   leavegroup:
+      description: Leave a claim group
+      usage: /<command> [group]
+      permission: derver.leavegroup
+      
+permissions:
+   derver.power:
+      description: "Blah blah"
+      default: true
+   derver.getpower:
+      description: "Blah blah"
+      default: true
+   derver.claim:
+      description: "Blah blah"
+      default: true
+   derver.newgroup:
+      description: "Blah blah"
+      default: true
+   derver.addgroup:
+      description: "Blah blah"
+      default: true
+   derver.leavegroup:
+      description: "Blah blah"
+      default: true
