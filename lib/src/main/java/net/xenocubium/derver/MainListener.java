@@ -4,7 +4,9 @@ import java.io.IOException;
 import java.util.List;
 
 import org.bukkit.Location;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.World;
+import org.bukkit.World.Environment;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.EntityType;
@@ -16,6 +18,9 @@ import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
 import org.bukkit.event.entity.PlayerDeathEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
+import org.bukkit.event.player.PlayerPortalEvent;
+import org.bukkit.event.player.PlayerTeleportEvent;
 
 import io.papermc.paper.event.player.AsyncChatEvent;
 import net.kyori.adventure.text.Component;
@@ -23,12 +28,27 @@ import net.kyori.adventure.text.format.TextColor;
 
 public class MainListener implements Listener {
 	
-	 @EventHandler
-	 public void onBlockBreak(BlockBreakEvent event) {
-		Location loc = event.getBlock().getLocation();
+	@EventHandler
+	public void onPlayerPortal(PlayerPortalEvent event) {
+		Location from = event.getFrom();
+		Location to = event.getTo();
 		
-		Player player = event.getPlayer();
-		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return;
+		Environment fromEnv = from.getWorld().getEnvironment();
+		Environment toEnv = to.getWorld().getEnvironment();
+		
+		if (!((fromEnv == Environment.NETHER && toEnv == Environment.NORMAL ) || 
+				(toEnv == Environment.NETHER && fromEnv == Environment.NORMAL )))
+			return;
+		
+		to = new Location(to.getWorld(),from.getX(),from.getY(),from.getZ());
+		
+		event.setTo(to);
+	}
+	
+	public boolean blockHandler(BlockEvent event, Player player) {
+		Location loc = event.getBlock().getLocation();
+
+		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return false;
 		int x = loc.blockX() / 16;
 		int z = loc.blockZ() / 16;
 		 
@@ -37,47 +57,37 @@ public class MainListener implements Listener {
 		
 		String group = cThing.getChunk(x,z);
 		
-		if (group == null) return;
+		if (group == null) return false;
 		
 		List<String> groups = groupObj.getGroups(player, false);
 		
 		if (!groups.contains(group)) {
-			event.setCancelled(true);
 			player.sendMessage(Component.text("This block is owned by " + group));
+			return true;
 		}
 		
-		//event.setCancelled(true);
+		return false;
+	}
+	
+	
+	@EventHandler
+	public void onBlockBreak(BlockBreakEvent event) {
+		Player player = event.getPlayer();
+		if (blockHandler(event,player)) {
+			event.setCancelled(true);
+		}
 	 }
 	 
 	 @EventHandler
 	 public void onBlockPlace(BlockPlaceEvent event) {
-		Location loc = event.getBlock().getLocation();
-		
-		Player player = event.getPlayer();
-		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return;
-		int x = loc.blockX() / 16;
-		int z = loc.blockZ() / 16;
-		 
-		Group groupObj = (new Group());
-		ChunkThing cThing = new ChunkThing(groupObj);
-		
-		String group = cThing.getChunk(x,z);
-		
-		if (group == null) return;
-		
-		List<String> groups = groupObj.getGroups(player, false);
-		
-		if (!groups.contains(group)) {
-			event.setCancelled(true);
-			player.sendMessage(Component.text("This block is owned by " + group));
-		}
-		
-		//event.setCancelled(true);
+		 Player player = event.getPlayer();
+		 if (blockHandler(event,player)) {
+			 event.setCancelled(true);
+		 }
 	 }
 	 
      @EventHandler
      public void onPlayerChat(AsyncChatEvent e){
-
     	 e.renderer(new ChatThing());
      }
      
