@@ -108,6 +108,8 @@ public class MainListener implements Listener {
      	
      	int deduct = (killer == null) ? 1 : 5;
      	
+     	if (deduct == 1 && amount < 2) return;
+     	
      	pThing.addPower(group, -deduct);
      	
      	if (amount < deduct) {
