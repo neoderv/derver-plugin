@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 import org.bukkit.Bukkit;
+import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
@@ -32,7 +33,7 @@ public class GroupInfo implements CommandExecutor {
     	for (int i = 0; i < groupInfo.size(); i++) {
     		String user = groupInfo.get(i);
     		UUID uuid = UUID.fromString(user);
-    		Player player = Bukkit.getPlayer(uuid);
+    		OfflinePlayer player = Bukkit.getOfflinePlayer(uuid);
     		
     		groupInfo.set(i,(player == null) ? "Unknown" : player.getName());
     	}
