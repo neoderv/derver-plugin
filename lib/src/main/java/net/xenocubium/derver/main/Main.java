@@ -7,6 +7,7 @@ import net.xenocubium.derver.gen.BiomeGen;
 import net.xenocubium.derver.gen.ChunkGen;
 import net.xenocubium.derver.gen.WorldGen;
 import net.xenocubium.derver.group.AddGroup;
+import net.xenocubium.derver.group.GroupInfo;
 import net.xenocubium.derver.group.LeaveGroup;
 import net.xenocubium.derver.group.NewGroup;
 
@@ -29,6 +30,7 @@ public class Main extends JavaPlugin {
     	this.getCommand("newgroup").setExecutor(new NewGroup());
     	this.getCommand("addgroup").setExecutor(new AddGroup());
     	this.getCommand("leavegroup").setExecutor(new LeaveGroup());
+    	this.getCommand("group").setExecutor(new GroupInfo());
     }
 
     @Override

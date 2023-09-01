@@ -2,8 +2,8 @@ name: DerverPlugin
 version: 1.0.0
 main: net.xenocubium.derver.main.Main
 description: Derver plugin...
-author: PaperMC
-website: https://papermc.io
+author: derv
+website: https://xenocubium.net/games
 api-version: '1.20'
 load: startup
 commands:
@@ -23,6 +23,10 @@ commands:
       description: Create a claim group
       usage: /<command> [group]
       permission: derver.newgroup
+   group:
+      description: Get info of a claim group
+      usage: /<command> [group]
+      permission: derver.group
    addgroup:
       description: Add a player to a claim group that you own
       usage: /<command> [group] [player]
