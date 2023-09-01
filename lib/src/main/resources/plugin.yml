@@ -55,3 +55,6 @@ permissions:
    derver.leavegroup:
       description: "Blah blah"
       default: true
+   derver.group:
+      description: "Blah blah"
+      default: true
