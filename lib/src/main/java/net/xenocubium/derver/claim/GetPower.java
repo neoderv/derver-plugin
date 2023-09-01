@@ -1,14 +1,12 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.claim;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.UUID;
 
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
 import net.kyori.adventure.text.Component;

@@ -1,15 +1,10 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.gen;
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
-import org.bukkit.Material;
 import org.bukkit.block.Biome;
 import org.bukkit.generator.BiomeProvider;
-import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 import org.jetbrains.annotations.NotNull;
 

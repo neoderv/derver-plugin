@@ -1,6 +1,6 @@
 name: DerverPlugin
 version: 1.0.0
-main: net.xenocubium.derver.Main
+main: net.xenocubium.derver.main.Main
 description: Derver plugin...
 author: PaperMC
 website: https://papermc.io

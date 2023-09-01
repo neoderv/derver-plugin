@@ -1,9 +1,8 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.gen;
 
 import java.util.Random;
 
 import org.bukkit.Material;
-import org.bukkit.block.Biome;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.generator.WorldInfo;
 

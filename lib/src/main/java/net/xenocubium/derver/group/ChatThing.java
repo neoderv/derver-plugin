@@ -1,4 +1,4 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.group;
 
 import java.util.List;
 
@@ -8,7 +8,6 @@ import org.jetbrains.annotations.NotNull;
 import io.papermc.paper.chat.ChatRenderer;
 import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
-import net.kyori.adventure.text.TextComponent;
 import net.kyori.adventure.text.format.TextColor;
 
 public class ChatThing implements ChatRenderer {
@@ -28,8 +27,6 @@ public class ChatThing implements ChatRenderer {
 	    	i++;
 	    	if (group.length() > 15) {
 	    		group = group.substring(0,12) + "...";
-	    	} else {
-	    		group = group;
 	    	}
 	    	
 	    	if (i > 3) continue;

@@ -1,4 +1,4 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.gen;
 
 import java.awt.image.BufferedImage;
 import java.io.File;

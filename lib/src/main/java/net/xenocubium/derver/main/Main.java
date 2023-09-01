@@ -1,14 +1,16 @@
-package net.xenocubium.derver;
+package net.xenocubium.derver.main;
 
-import net.kyori.adventure.text.Component;
-
-import java.io.File;
+import net.xenocubium.derver.claim.ClaimChunk;
+import net.xenocubium.derver.claim.GetPower;
+import net.xenocubium.derver.claim.Power;
+import net.xenocubium.derver.gen.BiomeGen;
+import net.xenocubium.derver.gen.ChunkGen;
+import net.xenocubium.derver.gen.WorldGen;
+import net.xenocubium.derver.group.AddGroup;
+import net.xenocubium.derver.group.LeaveGroup;
+import net.xenocubium.derver.group.NewGroup;
 
 import org.bukkit.Bukkit;
-import org.bukkit.configuration.file.YamlConfiguration;
-import org.bukkit.event.EventHandler;
-import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.generator.BiomeProvider;
 import org.bukkit.generator.ChunkGenerator;
 import org.bukkit.plugin.java.JavaPlugin;
