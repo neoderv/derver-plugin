@@ -32,7 +32,10 @@ public class Power implements CommandExecutor {
     	Group groupObj = (new Group());
     	List<String> groups = groupObj.getGroups(player, false);
 		
-		if (!groups.contains(group)) return false;
+		if (!groups.contains(group)) {
+    		player.sendMessage(Component.text("You must be in a group!"));
+			return false;
+		};
 		
 		Inventory inv = player.getInventory();
 		ItemStack[] contents = inv.getContents();
