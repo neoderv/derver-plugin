@@ -28,31 +28,7 @@ public class MainListener implements Listener {
 	
 	@EventHandler
 	public void onExplode(ExplosionPrimeEvent event) {
-		Location loc = event.getLocation();
-
-		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return;;
-		int x = loc.blockX() / 16;
-		int z = loc.blockZ() / 16;
-		 
-		Group groupObj = (new Group());
-		ChunkThing cThing = new ChunkThing(groupObj);
-		
-		String group = cThing.getChunk(x,z);
-		
-		if (group == null) {
-			event.setCancelled(false);
-			return;
-		};
-
-		// TODO: Make this part look good, I am building everything in my head
-		List<String> groups = new ArrayList<String>();
-
-		if (!groups.contains(group)) {
-			event.setCancelled(true);
-			return;
-		}
-
-		event.setCancelled(false);
+		event.setCancelled(true);
 	}
 	
 	@EventHandler
