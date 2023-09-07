@@ -34,8 +34,8 @@ public class ClaimChunk implements CommandExecutor {
 	
 		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return false;
 		
-		int x = loc.blockX() / 16;
-		int z = loc.blockZ() / 16;
+		int x = loc.getChunk().getX();
+		int z = loc.getChunk().getZ();
 		
 		ChunkThing cThing = new ChunkThing(groupObj);
 		String owner = cThing.getChunk(x, z);

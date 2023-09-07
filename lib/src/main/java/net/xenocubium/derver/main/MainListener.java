@@ -52,8 +52,8 @@ public class MainListener implements Listener {
 		Location loc = event.getBlock().getLocation();
 
 		if (loc.getWorld().getEnvironment() != World.Environment.NORMAL) return false;
-		int x = loc.blockX() / 16;
-		int z = loc.blockZ() / 16;
+		int x = loc.getChunk().getX();
+		int z = loc.getChunk().getZ();
 		 
 		Group groupObj = (new Group());
 		ChunkThing cThing = new ChunkThing(groupObj);
