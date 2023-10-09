@@ -1,9 +1,13 @@
 package net.xenocubium.derver.main;
 import org.bukkit.Location;
 import org.bukkit.World.Environment;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
+import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.event.player.PlayerPortalEvent;
+
+import net.kyori.adventure.text.Component;
 
 public class MainListener implements Listener {
 
@@ -23,4 +27,10 @@ public class MainListener implements Listener {
 		
 		event.setTo(to);
 	}
+
+	@EventHandler
+	public void onPlayerJoin(PlayerJoinEvent event) {
+		Player player = event.getPlayer();
+		
+		player.sendMessage(Component.text("Welcome to MDGCiv! It is highly suggested that you authenticate at https://civ.dervland.net"));	}
 }
