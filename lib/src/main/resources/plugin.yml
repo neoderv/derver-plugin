@@ -6,3 +6,13 @@ author: derv
 website: https://xenocubium.net/games
 api-version: '1.20'
 load: startup
+commands:
+   auth:
+      description: Authenticate with the webserver
+      usage: /<command> [auth]
+      permission: derver.auth
+
+permissions:
+   derver.auth:
+      description: "Blah blah"
+      default: true
